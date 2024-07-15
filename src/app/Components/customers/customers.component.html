@@ -1,0 +1,33 @@
+
+<div class="container mt-4">
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <input type="text" [(ngModel)]="filterName" (input)="filterByName()" class="form-control" placeholder="Search Name">
+    </div>
+    <div class="col-md-6">
+      <input type="number" [(ngModel)]="filterAmount"  (input)="filterByAmount()" class="form-control" placeholder="Search Amount">
+    </div>
+  </div>
+
+  <table class="table table-striped table-hover">
+    <thead class="thead-dark">
+      <tr >
+        <th>Name</th>
+        <th>Transactions Date</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (transaction of filteredCustomers; track transaction.id) {
+        <tr class="clickable-row" (click)="selectedCustomer(transaction.customer_id)">
+          <td>{{transaction.customer_name}}</td>
+          <td>{{transaction.date}}</td>
+          <td>{{transaction.amount}}</td>
+        </tr>
+
+
+      }
+
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,36 @@
+@if (filterTransaction) {
+
+  <div class=" mt-4">
+    @for (customer of customers; track customer.id) {
+      @if(filterTransaction[0].customer_id == customer.id){
+
+        <h3>Transactions for Customer {{ customer.name }}</h3>
+      }
+    }
+    <ul>
+      @for (transaction of filterTransaction; track transaction.id) {
+
+        <li >
+          Date: {{ transaction.date }}, Amount: {{ transaction.amount }}
+        </li>
+      }
+    </ul>
+
+    <apx-chart [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [xaxis]="chartOptions.xaxis"
+    [dataLabels]="chartOptions.dataLabels"
+    [plotOptions]="chartOptions.plotOptions"
+    [title]="chartOptions.title">
+</apx-chart>
+
+
+  </div>
+  @if (filterTransaction.length === 0) {
+
+    <div>
+      <p>No transactions found for this customer.</p>
+    </div>
+  }
+}
+

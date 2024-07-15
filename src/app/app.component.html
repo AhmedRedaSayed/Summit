@@ -1,0 +1,14 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 py-5">
+      <app-customers (customerSelected)="onCustomerSelected($event)"></app-customers>
+    </div>
+    <div class="col-md-6 py-5">
+      @if (selectedCustomerId !== null) {
+        <app-transactions  [customerId]="selectedCustomerId"></app-transactions>
+      }
+
+    </div>
+  </div>
+</div>
